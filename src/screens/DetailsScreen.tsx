@@ -57,38 +57,34 @@ const DetailsScreen = (props: any) => {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Text style={[styles.textStyle, { lineHeight: 25, padding: 10 }]}>
-          {expand ? data.paragraphs : data.paragraphs[0]}
-        </Text>
+    <View style={styles.container}>
+      <Text style={[styles.textStyle, { lineHeight: 25, padding: 10 }]}>
+        {expand ? data.paragraphs : data.paragraphs[0]}
+      </Text>
 
-        <View
-          style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}
+      <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+        <TouchableOpacity
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 5,
+            borderColor: '#fff',
+            borderWidth: 2,
+            width: '50%',
+          }}
+          onPress={readMoreButtonPress}
         >
-          <TouchableOpacity
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 5,
-              borderColor: '#fff',
-              borderWidth: 2,
-              width: '50%',
-            }}
-            onPress={readMoreButtonPress}
-          >
-            <Text style={styles.textStyle}>
-              {expand ? 'Read Less' : 'Read More'}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <CustomButton
-          title="Details"
-          onPress={() => navigation.navigate('Component1')}
-        />
+          <Text style={styles.textStyle}>
+            {expand ? 'Read Less' : 'Read More'}
+          </Text>
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+
+      <CustomButton
+        title="Details"
+        onPress={() => navigation.navigate('Component1')}
+      />
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -98,7 +94,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 20,
-    color: '#fff',
+    //color: '#fff',
   },
 });
 export default DetailsScreen;

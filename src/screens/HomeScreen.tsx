@@ -7,27 +7,27 @@ import colors from '../constants/colors';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import AlbumsFlatList from '../Tasks/AlbumsFlatList';
 import FormInputs from '../Tasks/FormInputs';
+import useFetch from '../Hooks/CustomHook';
+import SearchWithFilter from '../Tasks/SearchWithFilter';
+import ListWithButton from '../Tasks/ListWithButton';
+import Practise from '../Tasks/Practise';
+import { UserContext } from '../Hooks/UserContext';
 
-const fetchApi = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  return await response.json();
+const Obj1 = {
+  name: 'CCC',
+  email: 'ccc@gmail.com',
 };
-const useFetch = (url: string) => {
-  const dataUsers = use(fetchApi());
-  const [data, setData] = useState({});
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(dataVal => setData(dataVal));
-  }, [url]);
-  return { data: data, isLoading: true, error: 'No Error' };
+export const UserProvider = ({ children }: any) => {
+  return <UserContext.Provider value={Obj1}>{children}</UserContext.Provider>;
 };
 const HomeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [message, setMessage] = useState('Hi');
+  //const [data, setData] = useState([]);
 
   let str = 'ABC';
-  //const data = useFetch('https://jsonplaceholder.typicode.com/users');
+  const data = useFetch('https://jsonplaceholder.typicode.com/users');
+  //console.log('Custom_Hooks:', data);
   //console.log('DATA:', data);
   // const handleBackPress = () => {
   //   console.log('handleBackPress');
@@ -48,6 +48,18 @@ const HomeScreen = () => {
       //subscription.remove();
     };
   }, []); */
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetch(
+  //       'https://jsonplaceholder.typicode.com/users',
+  //     );
+  //     const jsonRes = await response.json();
+  //     //setData(jsonRes);
+  //     console.log('JSON_Res:', jsonRes);
+  //   };
+  //   fetchData();
+  // }, []);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -70,7 +82,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FormInputs />
+      {/* <FormInputs /> */}
       {/* <SearchWithFilter /> */}
       {/* <AlbumsFlatList /> */}
       {/* <AddTodos /> */}
@@ -78,7 +90,8 @@ const HomeScreen = () => {
       {/* <AddTodoList /> */}
       {/* <FormValidation /> */}
       {/* <Counter /> */}
-
+      {/* <ListWithButton /> */}
+      <Practise />
       {/* <CustomButton
         title="Details"
         onPress={() => navigation.navigate('Details')}

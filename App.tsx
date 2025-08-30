@@ -14,11 +14,17 @@ import {
   Text,
 } from 'react-native';
 import AppNavigator from './src/navigation';
+import React from 'react';
+import { MyContextProvider } from './src/Hooks/UserContext';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
-  return <AppNavigator />;
+  return (
+    <MyContextProvider>
+      <AppNavigator />
+    </MyContextProvider>
+  );
 }
 
 const styles = StyleSheet.create({

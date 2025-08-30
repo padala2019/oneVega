@@ -6,13 +6,13 @@ import {
   StyleSheet,
   TextInput,
 } from 'react-native';
-import React, {useEffect, useState, useLayoutEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import colors from '../constants/colors';
 import CustomButton from '../components/CustomButton';
-import {getData, postData} from '../services/api';
-import {reporter} from '../../metro.config';
+//import {getData, postData} from '../services/api';
+import { reporter } from '../../metro.config';
 
 const SearchWithFilter = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -90,10 +90,12 @@ const SearchWithFilter = () => {
     return (
       <View style={styles.listViewStyle}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Details', {data: item})}>
-          <Text style={{fontSize: 18, color: '#fff'}}>{item.item.name}</Text>
+          onPress={() => navigation.navigate('Details', { data: item })}
+        >
+          <Text style={{ fontSize: 18, color: '#fff' }}>{item.item.name}</Text>
           <Text
-            style={{color: '#fff'}}>{`City: ${item.item.address.city}`}</Text>
+            style={{ color: '#fff' }}
+          >{`City: ${item.item.address.city}`}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -113,7 +115,7 @@ const SearchWithFilter = () => {
           data={searchQuery.length > 0 ? dataFilter : data}
           renderItem={renderItemView}
           keyExtractor={item => item.id}
-          ItemSeparatorComponent={() => <View style={{height: 5}} />}
+          ItemSeparatorComponent={() => <View style={{ height: 5 }} />}
         />
       </View>
       <CustomButton
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.appPrimary,
   },
-  flatListStyle: {marginTop: 2, height: '75%'},
+  flatListStyle: { marginTop: 2, height: '75%' },
   loginTxtStyle: {
     color: colors.white,
     fontSize: 15,
