@@ -12,6 +12,7 @@ import SearchWithFilter from '../Tasks/SearchWithFilter';
 import ListWithButton from '../Tasks/ListWithButton';
 import Practise from '../Tasks/Practise';
 import { UserContext } from '../Hooks/UserContext';
+import Accordion from '../Tasks/Accordion';
 
 const Obj1 = {
   name: 'CCC',
@@ -91,11 +92,12 @@ const HomeScreen = () => {
       {/* <FormValidation /> */}
       {/* <Counter /> */}
       {/* <ListWithButton /> */}
+      {/* <Accordion /> */}
       <Practise />
-      {/* <CustomButton
-        title="Details"
+      <CustomButton
+        title="Details A"
         onPress={() => navigation.navigate('Details')}
-      /> */}
+      />
     </View>
   );
 };

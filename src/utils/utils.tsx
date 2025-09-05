@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const formatDate = (dateString: string | number | Date) => {
   const date = new Date(dateString);
   return date.toLocaleDateString();
